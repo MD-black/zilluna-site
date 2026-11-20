@@ -1,6 +1,6 @@
 # zilluna.com — coming soon
 
-The page zilluna.com shows until the Zilluna app is hosted: the logo on the app's morning sky, «كل ما يحتاجه طفلك في مكان واحد», and the ways to reach us: the Facebook page, info@zilluna.com, and Instagram, TikTok and YouTube.
+The page zilluna.com shows until the Zilluna app is hosted: the logo on the app's morning sky, «كل ما يحتاجه طفلك في مكان واحد», and the ways to reach us: the Facebook page, info@zilluna.com, and Instagram, TikTok, YouTube and X.
 
 One static page, served by GitHub Pages from `main` with the custom domain in `CNAME`. The logo, icons and cover image come from the app's brand files (`docs/brand` in the app's repository); the two typefaces are the app's own, Baloo Bhaijaan 2 and Rubik, under the SIL Open Font License 1.1 (`fonts/`). No scripts, no cookies, no outside requests.
 
