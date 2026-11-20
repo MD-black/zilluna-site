@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ظلّنا — منصة عربية للتربية الخاصة</title>
+<meta name="description" content="كل ما يحتاجه طفلك في مكان واحد: معلمون ومختصون موثّقون قريبون منك، وخطة واضحة، وتقدّم تراه كل أسبوع. نطلق قريباً.">
+<meta name="theme-color" content="#2f62eb">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://zilluna.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ظلّنا Zilluna">
+<meta property="og:url" content="https://zilluna.com/">
+<meta property="og:title" content="ظلّنا — منصة عربية للتربية الخاصة">
+<meta property="og:description" content="كل ما يحتاجه طفلك في مكان واحد. نطلق قريباً.">
+<meta property="og:image" content="https://zilluna.com/og.png">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/baloo-bhaijaan-2-arabic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/rubik-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* The app's own typefaces (SIL Open Font License 1.1 — see fonts/), served from here: no outside requests. */
+  @font-face { font-family: "Baloo Bhaijaan 2"; font-weight: 800; font-display: swap; src: url(/fonts/baloo-bhaijaan-2-arabic-800-normal.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; }
+  @font-face { font-family: "Baloo Bhaijaan 2"; font-weight: 800; font-display: swap; src: url(/fonts/baloo-bhaijaan-2-latin-800-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2013-2014, U+2018-201E; }
+  @font-face { font-family: Rubik; font-weight: 400; font-display: swap; src: url(/fonts/rubik-arabic-400-normal.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; }
+  @font-face { font-family: Rubik; font-weight: 400; font-display: swap; src: url(/fonts/rubik-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2013-2014, U+2018-201E; }
+  @font-face { font-family: Rubik; font-weight: 500; font-display: swap; src: url(/fonts/rubik-arabic-500-normal.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; }
+  @font-face { font-family: Rubik; font-weight: 500; font-display: swap; src: url(/fonts/rubik-latin-500-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2013-2014, U+2018-201E; }
+
+  :root {
+    --sky: #2f62eb; --sun: #ffc83d; --coral: #ff7a59; --night: #172554; --on-sky: #ffffff;
+    --on-sky-soft: rgba(255, 255, 255, .86);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column;
+    font-family: Rubik, "Segoe UI", Tahoma, sans-serif; color: var(--on-sky);
+    background: #1f4fd8; /* under the sky, before it paints */
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* The app's morning sky (--zl-sky-morning): soft light in the middle, violet at the foot, stars, orbs and hills. */
+  .sky {
+    position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+    background:
+      radial-gradient(60% 55% at 50% 32%, #ffffff26 0%, #ffffff00 70%),
+      radial-gradient(70% 60% at 0% 100%, #6d4ff080 0%, #6d4ff000 62%),
+      radial-gradient(55% 50% at 100% 0%, #8fb4ff40 0%, #8fb4ff00 60%),
+      linear-gradient(135deg, #1f4fd8 0%, #2f62eb 50%, #3b52e4 100%);
+  }
+  .orb { position: absolute; border-radius: 50%; transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), rgba(255,255,255,.07) 60%, rgba(255,255,255,0) 72%);
+    animation: drift 18s ease-in-out infinite alternate; }
+  .star { position: absolute; color: #fff6d6; animation: twinkle 4.5s ease-in-out infinite; }
+  .hills { position: absolute; inset: auto 0 0 0; width: 100%; height: min(24vh, 200px); }
+  @keyframes drift { to { transform: translate(-46%, -54%); } }
+  @keyframes twinkle { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .orb, .star, .rise { animation: none !important; } }
+
+  main {
+    flex: 1; width: 100%; max-width: 760px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 56px 20px 40px;
+  }
+  .rise { animation: rise .7s cubic-bezier(.2,.8,.2,1) both; }
+  .rise:nth-child(2) { animation-delay: .08s; } .rise:nth-child(3) { animation-delay: .16s; }
+  .rise:nth-child(4) { animation-delay: .24s; } .rise:nth-child(5) { animation-delay: .32s; } .rise:nth-child(6) { animation-delay: .4s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+  /* Clear space under the logo: half the symbol's height (brand rule). */
+  .logo { width: clamp(176px, 42vw, 236px); height: auto; margin-bottom: clamp(36px, 7vw, 54px);
+    filter: drop-shadow(0 18px 30px rgba(14,30,110,.32)) drop-shadow(0 4px 8px rgba(14,30,110,.18)); }
+  .pill { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; line-height: 1;
+    padding: 9px 16px 10px; border-radius: 999px; margin-bottom: 18px;
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sun);
+    box-shadow: 0 0 0 4px rgba(255,200,61,.25); }
+  h1 { font-family: "Baloo Bhaijaan 2", Rubik, sans-serif; font-weight: 800; font-size: clamp(30px, 6.4vw, 52px); line-height: 1.2; text-wrap: balance; }
+  h1::after { content: ""; display: block; width: 64px; height: 6px; border-radius: 6px; margin: 14px auto 0;
+    background: linear-gradient(90deg, var(--sun), var(--coral)); }
+  .lead { margin-top: 18px; max-width: 34em; font-size: clamp(16px, 2.4vw, 19px); line-height: 1.8; color: var(--on-sky-soft); text-wrap: pretty; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px;
+    border-radius: 16px; font: 500 16px/1 Rubik, sans-serif; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn--sun { background: linear-gradient(180deg, #ffd15c, var(--sun)); color: var(--night);
+    box-shadow: 0 10px 24px -8px rgba(255,200,61,.75), inset 0 1px 0 rgba(255,255,255,.5); }
+  .btn--glass { color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+  .en { margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.72); }
+  footer { position: relative; padding: 0 20px 22px; text-align: center; font-size: 13px; color: rgba(255,255,255,.72); }
+  @media (max-width: 420px) { .actions { width: 100%; } .btn { width: 100%; } }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="orb" style="left:6%;top:16%;width:min(42vw,360px);height:min(42vw,360px)"></div>
+  <div class="orb" style="left:94%;top:14%;width:min(28vw,240px);height:min(28vw,240px);animation-delay:-6s"></div>
+  <div class="orb" style="left:88%;top:78%;width:min(36vw,300px);height:min(36vw,300px);animation-delay:-11s"></div>
+  <svg class="star" style="left:12%;top:44%;width:16px;height:16px" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+  <svg class="star" style="left:86%;top:36%;width:13px;height:13px;animation-delay:-1.5s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+  <svg class="star" style="left:22%;top:12%;width:10px;height:10px;animation-delay:-3s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+  <svg class="star" style="left:76%;top:10%;width:10px;height:10px;animation-delay:-2s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+  <svg class="star" style="left:70%;top:62%;width:9px;height:9px;animation-delay:-4s" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z"/></svg>
+  <svg class="hills" viewBox="0 0 820 118" preserveAspectRatio="none">
+    <path fill="rgba(255,255,255,.09)" d="M0 58C150 18 300 22 440 54S700 92 820 44L820 118L0 118Z"/>
+    <path fill="rgba(255,255,255,.08)" d="M0 92C170 62 350 70 520 90S740 100 820 80L820 118L0 118Z"/>
+  </svg>
+</div>
+
+<main>
+  <img class="logo rise" src="/logo.svg" alt="ظلّنا" width="333" height="151">
+  <span class="pill rise">نطلق قريباً</span>
+  <h1 class="rise">كل ما يحتاجه طفلك في مكان واحد</h1>
+  <p class="lead rise">منصة عربية للتربية الخاصة: معلمون ومختصون موثّقون قريبون منك، وخطة واضحة، وتقدّم تراه كل أسبوع — بالعربية، ومجاناً للأسر.</p>
+  <div class="actions rise">
+    <a class="btn btn--sun" href="https://www.facebook.com/zilluna.official" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"/></svg>
+      تابعنا على فيسبوك
+    </a>
+    <a class="btn btn--glass" href="mailto:info@zilluna.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Zm0 .5 9 6 9-6"/></svg>
+      <bdi dir="ltr">info@zilluna.com</bdi>
+    </a>
+  </div>
+  <p class="en rise" lang="en" dir="ltr">Zilluna — an Arabic special-education platform. Launching soon.</p>
+</main>
+<footer>ظلّنا © 2026</footer>
+</body>
+</html>
